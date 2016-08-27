@@ -11,7 +11,7 @@ class HostApplication(abnba.core.application.Application):
     app_name = 'host'
 
     views = [
-        (abnba.host.views.AuthView, r'^$', 'auth',),
+        (abnba.host.views.MainView, r'^main.html$', 'main',),
     ]
 
 

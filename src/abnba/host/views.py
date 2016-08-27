@@ -36,4 +36,5 @@ class AuthView(django.views.generic.View):
         return django.http.HttpResponse(r.text)
 
 
-
+class MainView(django.views.generic.TemplateView):
+    template_name = 'host/main.html'
