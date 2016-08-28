@@ -1,0 +1,59 @@
+{% extends 'abnba/base.html' %}
+
+{% block styles %}
+    <link rel='stylesheet' type='text/css' href='{{ static("hass/css/styles.css") }}' />
+    <link rel='stylesheet' type='text/css' href='{{ static("hass/css/sticky-footer.css") }}' />
+
+
+  <!-- Material Design fonts -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href='{{ static("bootstrap-3.3.6/css/bootstrap.min.css") }}' rel="stylesheet">
+
+  <!-- Bootstrap Material Design -->
+  <link rel='stylesheet' href='{{ static("bootstrap-material-design/css/bootstrap-material-design.min.css") }}' />
+  <link rel='stylesheet' href='{{ static("bootstrap-material-design/css/ripples.min.css") }}' />
+
+  <!-- Dropdown.js -->
+  <link href="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <!-- Twitter Bootstrap -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src='{{ static("bootstrap-3.3.6/js/bootstrap.min.js") }}'></script>
+    <script src='{{ static("bootstrap-material-design/js/material.min.js") }}'></script>
+    <script src='{{ static("bootstrap-material-design/js/ripples.min.js") }}'></script>
+{% endblock %}
+
+{% block onbodyload %}
+    $.material.init();
+{% endblock %}
+
+{% block layout %}
+    {# Top-horizontal bar with account, notifictions, dashboard links #}
+    {% include 'abnba/fragments/nav_primary.html' %}
+
+    {% block body %}
+        {% block breadcrumbs %}{% endblock breadcrumbs %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                {% block sidebar %}
+                {% endblock sidebar %}
+            </div>
+            <div class="col-md-10">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+    {% endblock body %}
+
+    {# Bottom-horizontal bar with informations #}
+    {% include 'abnba/fragments/footer.html' %}
+{% endblock %}
